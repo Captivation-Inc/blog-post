@@ -1,18 +1,19 @@
 import Link from "next/Link";
 import styles from "../styles/Header.module.css";
-import { Navbar, Button } from "react-bootstrap";
 import { useState } from "react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const openMenu = () => {
-      setIsOpen(!isOpen)
+    setIsOpen(!isOpen);
   };
-  
+
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
-        <a className={styles.navlogo}>[BrandLogo]</a>
+        <Link href="/">
+          <a className={styles.navlogo}>[BrandLogo]</a>
+        </Link>
         <ul
           className={
             isOpen === true
@@ -21,13 +22,19 @@ export default function Header() {
           }
         >
           <li className={styles.navitem}>
-            <a className={styles.navlink}>Home</a>
+            <Link href="/">
+              <a className={styles.navlink}>Home</a>
+            </Link>
           </li>
           <li className={styles.navitem}>
-            <a className={styles.navlink}>About</a>
+            <Link href="/posts">
+              <a className={styles.navlink}>Blogs</a>
+            </Link>
           </li>
           <li className={styles.navitem}>
-            <a className={styles.navlink}>Contact</a>
+            <Link href="/about">
+              <a className={styles.navlink}>About</a>
+            </Link>
           </li>
         </ul>
         <button
